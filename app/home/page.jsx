@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios"; // Importação do axios
 
 import CharacterCard from "../../components/CharacterCard";
+import styles from "./Home.module.css";
 
 export default function Home() {
     const [characters, setCharacters] = useState([]);
@@ -21,10 +22,12 @@ export default function Home() {
     console.log(characters) // Para verificar se os dados estão sendo recebidos corretamente.
 
     return (
-        <div>
+        <div className={styles.container}>
+            <div className={styles.grid}>
             {characters.map((char) => (
                 <CharacterCard key={char.id} character={char} />
             ))}
+        </div>
         </div>
     );
 }
