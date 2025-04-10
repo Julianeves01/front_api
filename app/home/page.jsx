@@ -22,6 +22,18 @@ export default function Home() {
     console.log(characters) // Para verificar se os dados estão sendo recebidos corretamente.
 
     return (
+        <>
+        <header className={styles.header}>
+            <div className={styles.logo}>Minha Logo</div>
+            <nav className={styles.nav}>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+        </header>
         <div className={styles.container}>
             <div className={styles.grid}>
             {characters.map((char) => (
@@ -29,5 +41,6 @@ export default function Home() {
             ))}
         </div>
         </div>
+    </>
     );
 }
