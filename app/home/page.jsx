@@ -15,7 +15,6 @@ export default function Home() {
 
 
     const fetchCharacters = async (name = "") => {
-        setNotFound(false);
         try {
             const response =await axios.get(`https://rickandmortyapi.com/api/character/?name=${name}`);
             setCharacters(response.data.results);
@@ -29,15 +28,9 @@ export default function Home() {
         fetchCharacters();
     }, []);
 
-    const handleCardClick = (name) => {
-        toast.info("Você clicou no personagem: ${name}", {
+    const handleCharacterClick = (name) => {
+        toast.info(`Você clicou no personagem ${name}`, {
         });
-    };
-    
-    const handleReset = () => {
-        setSearch("");
-        fetchCharacters();
-        router.push("/"); 
     };
 
     return (
@@ -47,15 +40,19 @@ export default function Home() {
             <ToastContainer position="top-right" autoClose={7500} theme="light" />
             <h1 className={styles.title}></h1>
             <input type="text" placeholder="Digite o nome do personagem" value={search} onChange={(e) => setSearch(e.target.value)} className={styles.searchInput} />
+
             <button onClick={() => fetchCharacters(search)} className={styles.searchButton} >
                 Buscar
             </button>
             <button onClick={() => {setSearch(""); fetchCharacters();}} className={styles.resetButton}>Resetar </button>
         </div>
+        {notFound && <h1 className={styles.notFound}>Personagem não encontrado 🫠</h1>}
+
+
         <main className={styles.container}>
             <section className={styles.grid}>
                 {characters.map((char) => (
-                    <CharacterCard key={char.id} character={char} />
+                    <CharacterCard key={char.id} character={char} onClick={() => handleCharacterClick(char.name)} />
                 ))}
             </section>
         </main>
