@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import styles from '../styles/Header.module.css'
 
 export default function Header() {
@@ -7,9 +8,9 @@ export default function Header() {
             <div className={styles.logo}>Rick And Morty</div>
             <nav className={styles.nav}>
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#contato">Contato</a></li>
+                    <li><Link href="/home">Home</Link></li>
+                    <li><Link href="#sobre">Sobre</Link></li>
+                    <li><Link href="/contato">Contato</Link></li>
                 </ul>
             </nav>
         </header>
