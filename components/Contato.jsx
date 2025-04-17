@@ -12,6 +12,14 @@ export default function Contato() {
                     Veja minhas linguagens de programação e meus projetos apenas clicando nos ícones abaixo!
                 </p>
             </div>
+            <div className={styles.icons}>
+                <a href="https://github.com/Julianeves01" target="_blank" rel="noopener noreferrer">
+                <img src="/github-icon.png" alt="GitHub" className={styles.icon} />
+                </a>
+                <a href="https://instagram.com/julia.s.neves" target="_blank" rel="noopener noreferrer">
+                <img src="/instagram-icon.png" alt="Instagram" className={styles.icon} />
+                </a>
+            </div>
         </div>
     );
 }
