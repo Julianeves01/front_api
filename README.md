@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 # 🌌 Rick and Morty API
 Este é um projeto React estruturado para consumir APIs e exibir informações de forma organizada e estilizada. 🚀
 
