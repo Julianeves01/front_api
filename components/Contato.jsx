@@ -4,6 +4,11 @@ import styles from "../styles/Contato.module.css";
 export default function Contato() {
     return (
         <div className={styles.container}>
+            {}
+            <a href="/" className={styles.backButton}>
+            <img src="/arrow-left-icon.png" alt="Voltar" className={styles.backIcon} />
+            Voltar para a Página Principal
+            </a>
             <div className={styles.card}>
                 <img src="/Minha-foto.jpg" alt="Minha foto" className={styles.image} />
                 <h2 className={styles.name}>Julia</h2>
