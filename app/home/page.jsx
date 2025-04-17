@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from "react";
 import axios from "axios"; 
-
 import CharacterCard from "../../components/CharacterCard";
 import styles from "./Home.module.css";
 import Header from "../../components/Header.jsx";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Home() {
     const [search, setSearch] = useState("");
@@ -14,6 +15,7 @@ export default function Home() {
 
 
     const fetchCharacters = async (name = "") => {
+        setNotFound(false);
         try {
             const response =await axios.get(`https://rickandmortyapi.com/api/character/?name=${name}`);
             setCharacters(response.data.results);
@@ -27,10 +29,17 @@ export default function Home() {
         fetchCharacters();
     }, []);
 
+    const handleCardClick = (name) => {
+        toast.info("Você clicou no personagem: ${name}", {
+        });
+    };
+
     return (
         <>
         <Header /> 
         <div className={styles.searchContainer}>
+            <ToastContainer position="top-right" autoClose={7500} theme="light" />
+            <h1 className={styles.title}>Rick and Morty Characters</h1>
             <input type="text" placeholder="Digite o nome do personagem" value={search} onChange={(e) => setSearch(e.target.value)} className={styles.searchInput} />
             <button onClick={() => fetchCharacters(search)} className={styles.searchButton} >
                 Buscar
