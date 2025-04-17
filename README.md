@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 # 🌌 Rick and Morty API
 Este é um projeto React estruturado para consumir APIs e exibir informações de forma organizada e estilizada. 🚀
 
@@ -59,5 +58,3 @@ front_api/
 - Estilização modular com CSS Modules.
 
 ---
-Feito por Julia Neves.
->>>>>>> 84a2970c82d0b61454de432be313ca79090efb89
