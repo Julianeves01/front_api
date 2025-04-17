@@ -33,13 +33,19 @@ export default function Home() {
         toast.info("Você clicou no personagem: ${name}", {
         });
     };
+    
+    const handleReset = () => {
+        setSearch("");
+        fetchCharacters();
+        router.push("/"); 
+    };
 
     return (
         <>
         <Header /> 
         <div className={styles.searchContainer}>
             <ToastContainer position="top-right" autoClose={7500} theme="light" />
-            <h1 className={styles.title}>Rick and Morty Characters</h1>
+            <h1 className={styles.title}></h1>
             <input type="text" placeholder="Digite o nome do personagem" value={search} onChange={(e) => setSearch(e.target.value)} className={styles.searchInput} />
             <button onClick={() => fetchCharacters(search)} className={styles.searchButton} >
                 Buscar
