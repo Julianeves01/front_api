@@ -13,17 +13,17 @@ export default function Home() {
     const [characters, setCharacters] = useState([]);
 
 
+    const fetchCharacters = async (name = "") => {
+        try {
+            const response =await axios.get(`https://rickandmortyapi.com/api/character/?name=${name}`);
+            setCharacters(response.data.results);
+        } catch (error) {
+            console.error("Erro ao buscar personagens",error);
+            setNotFound(true);
+            setCharacters([]);
+        }
+    };
     useEffect(() => {
-        const fetchCharacters = async (name = "") => {
-            try {
-                const response =await axios.get(`https://rickandmortyapi.com/api/character/?name=${name}`);
-                setCharacters(response.data.results);
-            } catch (error) {
-                console.error("Erro ao buscar personagens",error);
-                setNotFound(true);
-                setCharacters([]);
-            }
-        };
         fetchCharacters();
     }, []);
 
