@@ -35,6 +35,7 @@ export default function Home() {
             <button onClick={() => fetchCharacters(search)} className={styles.searchButton} >
                 Buscar
             </button>
+            <button onClick={() => {setSearch(""); fetchCharacters();}} className={styles.resetButton}>Resetar </button>
         </div>
         <main className={styles.container}>
             <section className={styles.grid}>

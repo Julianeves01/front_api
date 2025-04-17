@@ -1,6 +1,6 @@
 import styles from '../styles/CharacterCard.module.css'
 
-export default function CharacterCard ( {character} ) {
+export default function CharacterCard ( {character, onClick} ) {
     return (
         <div className={styles.card}>
             <img 
