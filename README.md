@@ -81,9 +81,8 @@ Você pode visualizar meu projeto hospedado no Vercel através do link abaixo:
 ## 🛠️ Tecnologias Utilizadas
 
 - React.js
-- JavaScript (ES6+)
+- JavaScript
 - CSS Modules
-- Vite (ou Create React App, dependendo do setup)
 - API pública: [Rick and Morty API](https://rickandmortyapi.com/)
 
 ---
