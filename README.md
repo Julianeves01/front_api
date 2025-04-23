@@ -74,7 +74,7 @@ front_api/
 
 Você pode visualizar meu projeto hospedado no Vercel através do link abaixo:
 
-👉 [https://nome-do-seu-projeto.vercel.app](https://front-api-xi.vercel.app/home)
+👉 [https:/RickandMortyAPI.vercel.app](https://front-api-xi.vercel.app/home)
 
 ---
 
