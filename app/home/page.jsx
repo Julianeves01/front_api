@@ -10,9 +10,10 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function Home() {
     const [search, setSearch] = useState("");
-    const [notFound, setNotFound] = useState(false);
     const [characters, setCharacters] = useState([]);
-
+    const [notFound, setNotFound] = useState(false);
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
 
     const fetchCharacters = async (name = "") => {
         try {
@@ -25,9 +26,25 @@ export default function Home() {
         }
     };
     useEffect(() => {
-        fetchCharacters();
-    }, []);
+        fetchCharacters(search.trim(), page);
+    }, [page]);
 
+    useEffect(() => {
+        fetchCharacters(search, page);
+    }, [search]);
+
+    const handleSearch = () => {
+        const name = search.trim();
+        setPage(1);
+        fetchCharacters(name,1);
+    };
+    const handleReset = () => {
+        setSearch("");
+        setPage(1);
+        fetchCharacters("",1);
+        toast.success("Filtro foi resetado!", {position: "top-left"});
+    };
+    
     const handleCharacterClick = (name) => {
         toast.info(`Você clicou no personagem ${name}`, {
         });
@@ -41,13 +58,27 @@ export default function Home() {
             <h1 className={styles.title}></h1>
             <input type="text" placeholder="Digite o nome do personagem" value={search} onChange={(e) => setSearch(e.target.value)} className={styles.searchInput} />
 
-            <button onClick={() => fetchCharacters(search)} className={styles.searchButton} >
+            <button onClick={handleSearch} className={styles.searchButton}>
                 Buscar
             </button>
-            <button onClick={() => {setSearch(""); fetchCharacters();}} className={styles.resetButton}>Resetar </button>
+            <button onClick={handleReset}className={styles.resetButton}>Resetar </button>
         </div>
-        {notFound && <h1 className={styles.notFound}>Personagem não encontrado 🫠</h1>}
+        <div className={styles.navControls}>
+            <button onClick = {() => setPage((p) => Math.max(p - 1, 1))}
+            disabled={page === 1} 
+            className={styles.buttonNav}
+            > 
+            Página Anterior
+            </button>
+            <button onClick = {() => setPage((p) => Math.min(p + 1, totalPages))}
+            disabled={page === totalPages}
+            className={styles.buttonNav}
+            >
+                Próxima Página
+            </button>
+        </div>
 
+        {notFound && <h1 className={styles.notFound}>Personagem não encontrado</h1>}
 
         <main className={styles.container}>
             <section className={styles.grid}>

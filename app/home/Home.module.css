@@ -22,6 +22,35 @@
     align-items: center;
     gap: 2rem;
 }
+
+.navControls {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.butonNav:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rebeccapurple;
+}
+
+.buttonSearch,
+.buttonReset,
+.buttonNav {
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    color: white;
+    background-color: #0056b3;
+}
+
 .searchContainer {
     display: flex;
     gap: 10px;
@@ -66,4 +95,8 @@
 
 .resetButton:hover {
     background-color: #d32f2f;
+}
+
+.buttonNav:hover {
+    background-color: #b6d0eb;
 }

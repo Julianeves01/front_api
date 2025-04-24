@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-		title: "Rick and Morty App",
+		title: "Rick and Morty API",
 		description: "Rick and Morty App",
 		};
 
