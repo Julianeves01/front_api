@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import styles from '../styles/CharacterCard.module.css'
 
 export default function CharacterCard ( {character, onClick} ) {

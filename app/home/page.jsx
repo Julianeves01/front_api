@@ -95,14 +95,21 @@ export default function Home() {
             </button>
         </div>
 
-        {notFound && <h1 className={styles.notFound}>Personagem não encontrado</h1>}
+        {notFound && <h1 className={styles.notFound}>Nenhum personagem encontrado</h1>}
 
+        {/* Loader enquanto os personagens estão sendo carregados */}
         <main className={styles.container}>
-            <section className={styles.grid}>
-                {characters.map((char) => (
-                    <CharacterCard key={char.id} character={char} onClick={() => handleCharacterClick(char.name)} />
-                ))}
-            </section>
+            {loading ? (
+                <div className={`${styles.loaderWrapper} ${loading ? "" : styles.hidden}`}>
+                    <img src="/rickMorty.gif" alt="Carregando..." className={styles.loader} />
+                </div>
+            ) : (
+                <div className={styles.grid}>
+                    {characters.map((char) => (
+                        <CharacterCard key={char.id} character={char} onClick={() => handleCharacterClick(char.name)} />
+                    ))}
+                </div>
+            )}
         </main>
         </>
     );
