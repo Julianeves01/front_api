@@ -1,53 +1,63 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "axios"; 
 import CharacterCard from "../../components/CharacterCard";
 import styles from "./Home.module.css";
 import Header from "../../components/Header.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Loader from "../../components/Loader";
 
 export default function Home() {
     const [search, setSearch] = useState("");
+    const [loading, setLoading] = useState(true);
     const [characters, setCharacters] = useState([]);
+    const cacheRef = useRef(new Map());
     const [notFound, setNotFound] = useState(false);
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
 
-    const fetchCharacters = async (name = "") => {
+    const fetchCharacters = async (name = "", page = 1) => {
         try {
-            const response =await axios.get(`https://rickandmortyapi.com/api/character/?name=${name}`);
+            setLoading(true);
+            const response = await axios.get(`https://rickandmortyapi.com/api/character/?name=${name}&page=${page}`);
             setCharacters(response.data.results);
+            setTotalPages(response.data.info.pages); // Atualiza o total de páginas
+            setNotFound(false); 
         } catch (error) {
-            console.error("Erro ao buscar personagens",error);
+            console.error("Erro ao buscar personagens", error);
             setNotFound(true);
             setCharacters([]);
+        } finally {
+            setLoading(false);
         }
     };
+
     useEffect(() => {
-        fetchCharacters(search.trim(), page);
+        fetchCharacters(search.trim(), page); // Inclui o parâmetro page
     }, [page]);
 
     useEffect(() => {
-        fetchCharacters(search, page);
+        setPage(1);
+        fetchCharacters(search.trim(), 1);
     }, [search]);
 
     const handleSearch = () => {
         const name = search.trim();
         setPage(1);
-        fetchCharacters(name,1);
+        fetchCharacters(name, 1);
     };
+
     const handleReset = () => {
         setSearch("");
         setPage(1);
-        fetchCharacters("",1);
-        toast.success("Filtro foi resetado!", {position: "top-left"});
+        fetchCharacters("", 1);
+        toast.success("Filtro foi resetado!", { position: "top-left" });
     };
-    
+
     const handleCharacterClick = (name) => {
-        toast.info(`Você clicou no personagem ${name}`, {
-        });
+        toast.info(`Você clicou no personagem ${name}`, {});
     };
 
     return (
@@ -61,18 +71,25 @@ export default function Home() {
             <button onClick={handleSearch} className={styles.searchButton}>
                 Buscar
             </button>
-            <button onClick={handleReset}className={styles.resetButton}>Resetar </button>
+            <button onClick={handleReset} className={styles.resetButton}>Resetar
+            </button>
+
         </div>
         <div className={styles.navControls}>
-            <button onClick = {() => setPage((p) => Math.max(p - 1, 1))}
-            disabled={page === 1} 
-            className={styles.buttonNav}
+            <button 
+                onClick={() => setPage((p) => Math.max(p - 1, 1))}
+                disabled={page === 1} 
+                className={styles.buttonNav}
             > 
-            Página Anterior
+                Página Anterior
             </button>
-            <button onClick = {() => setPage((p) => Math.min(p + 1, totalPages))}
-            disabled={page === totalPages}
-            className={styles.buttonNav}
+            <span className={styles.pageCounter}>
+                Página {page} de {totalPages}
+            </span>
+            <button 
+                onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
+                disabled={page === totalPages || totalPages === 0}
+                className={styles.buttonNav}
             >
                 Próxima Página
             </button>
@@ -87,6 +104,6 @@ export default function Home() {
                 ))}
             </section>
         </main>
-    </>
+        </>
     );
 }

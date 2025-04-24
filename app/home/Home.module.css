@@ -28,6 +28,7 @@
     justify-content: center;
     gap: 1.5rem;
     margin: 2rem 0;
+    align-items: center;
 }
 
 .butonNav:active {
@@ -48,7 +49,7 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     color: white;
-    background-color: #0056b3;
+    background-color: #0c5fb8;
 }
 
 .searchContainer {
@@ -98,5 +99,18 @@
 }
 
 .buttonNav:hover {
-    background-color: #b6d0eb;
+    background-color: #0c5fb8;
+}
+
+.buttonNav:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.pageCounter {
+    margin: 0 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
 }
