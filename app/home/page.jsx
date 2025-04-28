@@ -11,7 +11,8 @@ import Loader from "../../components/Loader";
 
 export default function Home() {
     const [search, setSearch] = useState("");
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
+    const [initialLoading, setInitialLoading] = useState(true); // Novo estado para carregamento inicial
     const [characters, setCharacters] = useState([]);
     const cacheRef = useRef(new Map());
     const [notFound, setNotFound] = useState(false);
@@ -20,7 +21,9 @@ export default function Home() {
 
     const fetchCharacters = async (name = "", page = 1) => {
         try {
-            setLoading(true);
+            if (initialLoading) setInitialLoading(true); // Ativa o carregamento inicial
+            else setLoading(true); 
+
             const response = await axios.get(`https://rickandmortyapi.com/api/character/?name=${name}&page=${page}`);
             setCharacters(response.data.results);
             setTotalPages(response.data.info.pages); // Atualiza o total de páginas
@@ -31,17 +34,13 @@ export default function Home() {
             setCharacters([]);
         } finally {
             setLoading(false);
+            setInitialLoading(false); // Desativa o carregamento inicial
         }
     };
 
     useEffect(() => {
         fetchCharacters(search.trim(), page); // Inclui o parâmetro page
     }, [page]);
-
-    useEffect(() => {
-        setPage(1);
-        fetchCharacters(search.trim(), 1);
-    }, [search]);
 
     const handleSearch = () => {
         const name = search.trim();
@@ -99,8 +98,8 @@ export default function Home() {
 
         {/* Loader enquanto os personagens estão sendo carregados */}
         <main className={styles.container}>
-            {loading ? (
-                <div className={`${styles.loaderWrapper} ${loading ? "" : styles.hidden}`}>
+            {initialLoading ? (
+                <div className={`${styles.loaderWrapper} ${initialLoading ? "" : styles.hidden}`}>
                     <img src="/rickMorty.gif" alt="Carregando..." className={styles.loader} />
                 </div>
             ) : (
