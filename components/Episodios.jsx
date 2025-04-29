@@ -49,6 +49,18 @@ const Episodios = () => {
                     descricao: "Aventura complicada de Morty com um dragão",
                     link: "https://youtu.be/ltkWFfVAHeI?si=hJfnyKk-1NOGq5Xa",
                 },
+                {
+                    id: 3,
+                    nome: 'Episódio 3',
+                    descricao: 'Rick e seu robô contra ele',
+                    link: "https://youtu.be/4Tjxr8jSGPg?si=XBaV_w7AOx_JXkzy",
+                },
+                {
+                    id: 4,
+                    nome: 'Episódio 4',
+                    descricao: "Aventura no microverso",
+                    link: "https://youtu.be/Vy39Lrho02o?si=9aw2hc44QQDBv4EI",
+                },
             ],
         },
     ]);
