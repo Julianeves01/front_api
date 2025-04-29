@@ -2,7 +2,7 @@
 
 .card {
     width: 275px;
-    height: 275px;
+    height: auto;
     background-color: rgba(74, 214, 104, 0.507);
     border: rgb(255, 255, 255) 2px solid;
     padding: 1rem;
@@ -15,12 +15,14 @@
 }
 
 .card:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .avatar {
     width: 125px;
     border-radius: 50%;
+    height: 125px;
+    
 }
 
 .title {

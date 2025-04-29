@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import styles from "../styles/Contato.module.css";
 
 export default function Contato() {
@@ -6,11 +7,11 @@ export default function Contato() {
         <div className={styles.container}>
             {}
             <a href="/" className={styles.backButton}>
-            <img src="/arrow-left-icon.png" alt="Voltar" className={styles.backIcon} />
+            <Image src="/arrow-left-icon.png" alt="Voltar" className={styles.backIcon} width={24} height={24} priority/>
             Voltar para a Página Principal
             </a>
             <div className={styles.card}>
-                <img src="/Minha-foto.jpg" alt="Minha foto" className={styles.image} />
+                <Image src="/Minha-foto.jpg" alt="Minha foto" className={styles.image} width={200} height={200} priority />
                 <h2 className={styles.name}>Julia</h2>
                 <p className={styles.description}>
                 Olá! Seja bem-vindo(a) ao meu site!
@@ -19,13 +20,13 @@ export default function Contato() {
             </div>
             <div className={styles.icons}>
                 <a href="https://github.com/Julianeves01" target="_blank" rel="noopener noreferrer">
-                <img src="/github-icon.png" alt="GitHub" className={styles.icon} />
+                <Image src="/github-icon.png" alt="GitHub" className={styles.icon} width={32} height={32}/>
                 </a>
                 <a href="https://instagram.com/julia.s.neves" target="_blank" rel="noopener noreferrer">
-                <img src="/instagram-icon.png" alt="Instagram" className={styles.icon} />
+                <Image src="/instagram-icon.png" alt="Instagram" className={styles.icon} width={32} height={32} />
                 </a>
                 <a href="https://www.linkedin.com/in/julia-nevess/" target="_blank" rel="noopener noreferrer">
-                <img src="/linkedin (1).png" alt="Linkedin" className={styles.icon} />
+                <Image src="/linkedin (1).png" alt="Linkedin" className={styles.icon} width={32} height={32} />
                 </a>
             </div>
         </div>
