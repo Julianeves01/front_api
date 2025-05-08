@@ -10,25 +10,25 @@ const Episodios = () => {
                 {
                     id: 1,
                     nome: 'Episódio 1',
-                    descricao: 'Aventuras de outra dimensão.',
+                    descricao: 'Aventuras de outra dimensão',
                     link: "https://youtu.be/5ZuoZJB-FFo?si=gwLhYCJD5dLckMB7",
                 },
                 {
                     id: 2,
                     nome: 'Episódio 2',
-                    descricao: "Rick e seu grande plano de Desmantelamento do governo alienígena.",
+                    descricao: "Rick e seu grande plano de Desmantelamento do governo alienígena",
                     link: "https://youtu.be/DDHvK2vEq24?si=gzlczHUH8IRmPG2o",
                 },
                 {
                     id: 3,
                     nome: 'Episódio 3',
-                    descricao: 'Morty e sua angústia existencial.',
+                    descricao: 'Morty e sua angústia existencial',
                     link: "https://youtu.be/EohG84f4WR8?si=Op8N4Ag4_LUTSp4a",
                 },
                 {
                     id: 4,
                     nome: 'Episódio 4',
-                    descricao: "Rick e Morty: uma grande odisseia no tempo contra as serpentes.",
+                    descricao: "Rick e Morty: uma grande odisseia no tempo contra as serpentes",
                     link: "https://youtu.be/JkFf7KQE_BE?si=fPZfBktvwoAbAUTy",
                 },
             ],
@@ -40,7 +40,7 @@ const Episodios = () => {
                 {
                     id: 1,
                     nome: 'Episódio 1',
-                    descricao: 'Rick é um holograma e precisa da ajuda de Morty.',
+                    descricao: 'Rick é um holograma e precisa da ajuda de Morty',
                     link: "https://youtu.be/RZTTW2NIwDg?si=NBzqiScRxAaNLGKi",
                 },
                 {
